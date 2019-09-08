@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Data.Models.Room>
+
+@{
+    ViewBag.Title = "Room Select";
+}
+
+<h2>Select Room</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Room Number
+            @*@Html.DisplayNameFor(model => model.Id)*@
+        </th>
+        <th>
+             Room Price
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+
+    {
+
+        if (item.IsOccupied==false)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Select Room", "ConfirmRoom", new { id = item.Id })
+        </td>
+    </tr>
+
+        }
+        else
+        {
+        <tr>
+            <td>
+            @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+            Not Available
+            </td>
+        </tr>
+        }
+
+      }
+
+</table>

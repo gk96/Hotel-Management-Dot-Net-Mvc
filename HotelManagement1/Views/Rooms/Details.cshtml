@@ -1,0 +1,68 @@
+﻿@model Data.Models.Room
+
+@{
+    ViewBag.Title = "Room Details";
+    if (!Convert.ToBoolean(Session["userIsAdmin"]))
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<h2>Room Details</h2>
+
+<div>
+    <h4>Room</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Customer Name
+            @*@Html.DisplayNameFor(model => model.User.Name)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Name)
+        </dd>
+
+        <dt>
+            Room Number
+            @*@Html.DisplayNameFor(model => model.Id)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsOccupied)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsOccupied)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckInDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckInDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckOutDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckOutDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

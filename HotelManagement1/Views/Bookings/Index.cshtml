@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Data.Models.Room>
+
+@{
+    ViewBag.Title = "Bookings";
+    if (!Convert.ToBoolean(Session["userID"]))
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Name)
+        </th>
+        <th>
+            Room Number
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.CheckInDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckOutDate)
+        </th>
+        <th></th>
+    </tr>
+    
+        
+            @foreach (var item in Model)
+            {
+
+
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CheckInDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CheckOutDate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Checkout", "Checkout", new { id = item.Id })
+                    </td>
+
+                </tr>
+            }
+
+       
+       
+
+    
+</table>
+
+
+  
